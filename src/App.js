@@ -13,11 +13,27 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 function App() {
-  const [hatches, setHatches] = useState(createCalendar());
+  const [hatches, setHatches] = useState([]);
+
+  useEffect(() => {
+    const calendar = localStorage.calendar
+    ? JSON.parse(localStorage.calendar)
+    : createCalendar();
+
+    setHatches(calendar);
+  }, []);
+
+  //store calendar in localstorage
+  useEffect(()=> {
+    hatches.length && localStorage.setItem('calendar', JSON.stringify(hatches));
+  }, [hatches])
 
   const handleFlipHatch = id => {
-    console.log(id)
-  }
+    const updatedHatches = hatches.map(hatch =>
+      hatch.id === id ? { ...hatch, open: !hatch.open } : hatch 
+    );
+    setHatches(updatedHatches);
+  };
 
   return (
     <>
