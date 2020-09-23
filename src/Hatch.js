@@ -6,7 +6,7 @@ const Hatch = ({ hatchData: { id, nr, text, img, open }, handleClick }) =>  (
         <p>{nr}</p>
     </div>
     <div className={open ? "back open" : "back"}>
-        <p>{nr}</p>
+        <p>{text}</p>
     </div>
 </>
 
