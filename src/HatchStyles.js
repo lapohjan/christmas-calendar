@@ -7,7 +7,7 @@ export const StyledHatch = styled.div`
     cursor: pointer;
 
     .front {
-        background: center / cover url(${props => props.background});
+        background: center / cover url(${hatchBackdrop});
         position: absolute;
         top: 0;
         left: 0;
@@ -35,7 +35,7 @@ export const StyledHatch = styled.div`
 
     .back {
         position: absolute;
-        background: center / cover url(${hatchBackdrop});
+        background: center / cover url(${props => props.background});
         top: 0px;
         left: 0px;
         z-index: 1;
